@@ -11,9 +11,7 @@ clear=lambda: os.system('cls && title Crash bot By LALOL' if os.name == 'nt' els
 bot = commands.Bot(case_insensitive=True, intents=discord.Intents.all(), command_prefix="botprefix")
 
 async def delete(obj):
-	try:
-		await obj.delete()
-		print(Fore.WHITE + f"[LOG] {obj.name} Deleted")
+	try: await obj.delete()
 	except: pass
 @bot.event
 async def on_command_error(ctx, error):
