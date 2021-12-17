@@ -72,7 +72,7 @@ async def roles(ctx):
 	try: await ctx.message.delete()
 	except: pass
 	while True:
-		try: await ctx.guild.create_role(name=rolename, colour=discord.Colour(0xFF0000), permissions=discord.Permissions.all())
+		try: await ctx.guild.create_role(name="rolename", colour=discord.Colour(0xFF0000), permissions=discord.Permissions.all())
 		except: break
 #banall
 async def ban(member):
