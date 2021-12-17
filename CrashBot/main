@@ -131,7 +131,7 @@ async def spam(ctx):
 async def rename(ctx):
 	try: await ctx.message.delete()
 	except: pass
-	await ctx.guild.edit(name="guildname", icon = icon)
+	await ctx.guild.edit(name="guildname")
 @bot.event
 async def on_guild_channel_create(channel):
 	if channel.name == "channelname":
