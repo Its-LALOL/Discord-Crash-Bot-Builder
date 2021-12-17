@@ -2,6 +2,7 @@ print("Loading...")
 import os
 os.system('title Crash bot By LALOL' if os.name == 'nt' else 'clear')
 import random, string
+import asyncio
 import discord
 from discord.ext import commands
 from colorama import init, Fore; init()
@@ -16,7 +17,7 @@ async def delete(obj):
 	except: pass
 @bot.event
 async def on_command_error(ctx, error):
-	print(Fore.RED + "[ERROR] "+ ctx.author + ": " + error)
+	print(Fore.RED + f"[ERROR] {ctx.author.name}: {error}")
 	try: await ctx.message.delete()
 	except: pass
 	if isinstance(error, commands.CommandOnCooldown):
