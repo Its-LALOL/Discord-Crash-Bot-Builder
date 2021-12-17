@@ -115,7 +115,7 @@ async def dmall(ctx):
 	for member in list(ctx.guild.members):
 		asyncio.create_task(dm(member))
 async def spam1(channel):
-	for aboba in range(spammessages):
+	for aboba in range(intmessages):
 		try: await channel.send(content="spammessage")
 		except: break
 @bot.command()
