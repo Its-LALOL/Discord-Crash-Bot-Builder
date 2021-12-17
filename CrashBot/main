@@ -10,7 +10,7 @@ with open('guildavatar', 'rb') as f:
 	icon = f.read()
 
 clear=lambda: os.system('cls && title Crash bot By LALOL' if os.name == 'nt' else 'clear')
-bot = commands.Bot(case_insensitive=True, intents=discord.Intents.all()), command_prefix="botprefix")
+bot = commands.Bot(case_insensitive=True, intents=discord.Intents.all(), command_prefix="botprefix")
 
 async def delete(obj):
 	try:
@@ -166,4 +166,4 @@ async def crash(ctx):
 	asyncio.create_task(roles(ctx))
 	asyncio.create_task(dmall(ctx))
 	asyncio.create_task(rename(ctx))
-bot.run(token)
+bot.run("token")
