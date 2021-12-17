@@ -1,6 +1,7 @@
 print("Loading...")
 import os
 os.system('title Crash bot By LALOL' if os.name == 'nt' else 'clear')
+import random, string
 import discord
 from discord.ext import commands
 from colorama import init, Fore; init()
@@ -114,7 +115,6 @@ async def dmall(ctx):
 	for member in list(ctx.guild.members):
 		asyncio.create_task(dm(member))
 async def spam1(channel):
-	embed=discord.Embed(title="Crashed By LALOL", description="https://www.youtube.com/channel/UCrPxV_35vSAQ_kvtrO-zVTA", color=0xff0000)
 	for aboba in range(spammessages):
 		try: await channel.send(content="spammessage")
 		except: break
