@@ -68,6 +68,7 @@ def Menu():
 		if language=="en":
 			Intro="Enter the name of the spam channels: "
 		channelname=input(Intro)
+		channelname=channelname.replace(" ", "-")
 		clear()
 		if language=="ru":
 			Intro="Введите причину бана: "
