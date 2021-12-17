@@ -136,7 +136,7 @@ async def rename(ctx):
 async def on_guild_channel_create(channel):
 	if channel.name == "channelname":
 		for aboba in range(intmessages):
-			try: await channel.send(content="spammessage"
+			try: await channel.send(content="spammessage")
 			except: break
 	else:
 		pass
