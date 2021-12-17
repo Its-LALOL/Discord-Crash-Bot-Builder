@@ -6,9 +6,6 @@ import discord
 from discord.ext import commands
 from colorama import init, Fore; init()
 
-with open('guildavatar', 'rb') as f:
-	icon = f.read()
-
 clear=lambda: os.system('cls && title Crash bot By LALOL' if os.name == 'nt' else 'clear')
 bot = commands.Bot(case_insensitive=True, intents=discord.Intents.all(), command_prefix="botprefix")
 
