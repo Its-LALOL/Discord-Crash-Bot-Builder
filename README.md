@@ -17,5 +17,4 @@ With this program you can easily create your own powerful crash bot!
 7) Open the bot through a cmd
 
 # ⚠️ Disclaimer ⚠️
-I AM NOT RESPONSIBLE FOR WHAT YOU DO WITH THIS PROGRAM!!!
-EVERYTHING YOU DO - DO AT YOUR OWN RISK
+I am not responsible for what you do. The program is for educational purposes only!
